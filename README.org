@@ -1,0 +1,10 @@
+#+TITLE: ox-whatsapp
+
+A simple WhatsApp markup exporter for org mode.
+
+This exporter is derived from the ASCII exporter which comes with
+org-mode. It behaves exactly like that exporter except in cases where
+that differs from the [[https://faq.whatsapp.com/539178204879377][markup supported by WhatsApp]].
+
+By default, you can access it in the export dispatcher under the ~w~
+key, itself under the ~t~ menu.

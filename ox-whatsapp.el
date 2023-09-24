@@ -81,6 +81,7 @@ is non-nil."
   (org-export-to-buffer 'whatsapp "*Ox-Whatsapp Export*"
     async subtreep visible-only body-only ext-plist (lambda () (text-mode))))
 
+;;;###autoload
 (org-export-define-derived-backend 'whatsapp 'ascii
   :translate-alist
   '((italic . ox-whatsapp-italic)

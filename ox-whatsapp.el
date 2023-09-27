@@ -26,7 +26,7 @@
 
 ;;; Code:
 
-(require 'org-element')
+(require 'org-element)
 (require 'ox)
 
 (defun ox-whatsapp-italic (_italic contents _info)

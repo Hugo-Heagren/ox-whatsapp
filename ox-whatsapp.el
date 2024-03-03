@@ -1,4 +1,4 @@
-;; ox-whatsapp.el --- Org mode whatsapp exporter   -*- lexical-binding: t; -*-
+;;; ox-whatsapp.el --- Org mode whatsapp exporter   -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2023  Hugo Heagren
 

@@ -47,6 +47,14 @@ CONTENTS is nil.  INFO is a plist holding contextual
 information."
   (format "```%s```" (org-element-property :value code)))
 
+(defun ox-whatsapp-quote-block (_quote-block contents _info)
+  "Transcode QUOTE-BLOCK element into Whatsapp markup.
+CONTENTS is the quote-block contents.  INFO is a plist used as
+a communication channel."
+  (replace-regexp-in-string
+   "^" "> "
+   (replace-regexp-in-string "\n\\'" "" contents)))
+
 (defun ox-whatsapp-export-as-whatsapp
     (&optional async subtreep visible-only body-only ext-plist)
 "Export current buffer to a text buffer.
@@ -86,7 +94,8 @@ is non-nil."
   :translate-alist
   '((italic . ox-whatsapp-italic)
     (strikethrough . ox-whatsapp-strike-through)
-    (code . ox-whatsapp-code))
+    (code . ox-whatsapp-code)
+    (quote-block . ox-whatsapp-quote-block))
   :menu-entry
   '(?t 1
        ((?W "As ASCII buffer (Whatsapp markup)"

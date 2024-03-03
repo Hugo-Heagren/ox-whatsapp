@@ -41,11 +41,17 @@ CONTENTS is text with strike-through markup.  INFO is a plist
 holding contextual information."
   (format "~%s~" contents))
 
-(defun ox-whatsapp-code (code _contents info)
+(defun ox-whatsapp-code (code _contents _info)
   "Return a CODE object from Org to Whatsapp markup.
 CONTENTS is nil.  INFO is a plist holding contextual
 information."
-  (format "```%s```" (org-element-property :value code)))
+  (format "`%s`" (org-element-property :value code)))
+
+(defun ox-whatsapp-verbatim (verbatim _contents _info)
+  "Return a VERBATIM object from Org to Whatsapp markup.
+CONTENTS is nil.  INFO is a plist holding contextual
+information."
+  (format "```%s```" (org-element-property :value verbatim)))
 
 (defun ox-whatsapp-quote-block (_quote-block contents _info)
   "Transcode QUOTE-BLOCK element into Whatsapp markup.
@@ -95,6 +101,7 @@ is non-nil."
   '((italic . ox-whatsapp-italic)
     (strikethrough . ox-whatsapp-strike-through)
     (code . ox-whatsapp-code)
+    (verbatim . ox-whatsapp-verbatim)
     (quote-block . ox-whatsapp-quote-block))
   :menu-entry
   '(?t 1

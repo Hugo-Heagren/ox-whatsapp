@@ -53,6 +53,16 @@ CONTENTS is nil.  INFO is a plist holding contextual
 information."
   (format "```%s```" (org-element-property :value verbatim)))
 
+(defun ox-whatsapp-src-block (src-block _contents _info)
+  "Return a VERBATIM object from Org to Whatsapp markup.
+CONTENTS is nil.  INFO is a plist holding contextual
+information."
+  (let* ((caption-text (caaar (org-element-property :caption src-block)))
+	 (caption (if (null caption-text)
+		    "" (format "*%s*" caption-text)))
+	 (content (org-element-property :value src-block)))
+  (format "```\n%s\n```\n%s" content caption)))
+
 (defun ox-whatsapp-quote-block (_quote-block contents _info)
   "Transcode QUOTE-BLOCK element into Whatsapp markup.
 CONTENTS is the quote-block contents.  INFO is a plist used as
@@ -102,7 +112,8 @@ is non-nil."
     (strikethrough . ox-whatsapp-strike-through)
     (code . ox-whatsapp-code)
     (verbatim . ox-whatsapp-verbatim)
-    (quote-block . ox-whatsapp-quote-block))
+    (quote-block . ox-whatsapp-quote-block)
+    (src-block . ox-whatsapp-src-block))
   :menu-entry
   '(?t 1
        ((?W "As ASCII buffer (Whatsapp markup)"
